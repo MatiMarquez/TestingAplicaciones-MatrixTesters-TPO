@@ -6,5 +6,3 @@
 ## Integrantes
 - 'Marquez Matias'
 - 'Posklinski Denise'
-- 'Vega Maximiliano'
-- 'Ramirez Martin'
