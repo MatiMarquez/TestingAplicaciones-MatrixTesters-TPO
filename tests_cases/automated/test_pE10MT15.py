@@ -10,25 +10,53 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+
 class TestPE10MT15():
-  def setup_method(self, method):
-    self.driver = webdriver.Chrome()
-    self.vars = {}
-  
-  def teardown_method(self, method):
-    self.driver.quit()
-  
-  def test_pE10MT15(self):
-    self.driver.get("http://127.0.0.1:5000/")
-    self.driver.set_window_size(945, 1020)
-    # self.driver.find_element(By.LINK_TEXT, "CART 0").click()
-    # self.driver.find_element(By.ID, "logo").click()
-    self.driver.find_element(By.LINK_TEXT, "Computers and Accessories").click()
-    self.driver.find_element(By.ID, "logo").click()
-    self.driver.find_element(By.LINK_TEXT, "Movies, Music and Video Games").click()
-    self.driver.find_element(By.ID, "logo").click()
-    self.driver.find_element(By.LINK_TEXT, "Jwelery, Watches and Eyewear").click()
-    self.driver.find_element(By.ID, "logo").click()
-    self.driver.find_element(By.CSS_SELECTOR, "table:nth-child(2) td:nth-child(3) #itemImage").click()
-    self.driver.find_element(By.ID, "logo").click()
-  
+    def setup_method(self, method):
+        self.driver = webdriver.Chrome()
+        self.vars = {}
+
+    def teardown_method(self, method):
+        self.driver.quit()
+
+    def test_pE10MT15(self):
+        # Se fija si hay una sesión activa
+        # session = self.driver.find_element(By.LINK_TEXT, "link").text
+        session = ''
+
+        if session == 'Sign in':
+            user = True  # Si hay una activa, al entrar al carrito de compras no nos pedirá ingresar
+        else:
+            user = False  # De lo contrario nos pedirá ingresar y el logo desaparecerá en esa interfaz
+
+        self.driver.get("http://127.0.0.1:5000/")
+        self.driver.set_window_size(974, 1047)
+
+        if user:
+            self.driver.find_element(By.LINK_TEXT, "CART 0").click()
+            self.driver.find_element(By.ID, "logo").click()
+
+        self.driver.find_element(By.LINK_TEXT, "Computers and Accessories").click()
+        assert self.driver.current_url != "http://127.0.0.1:5000/"
+        self.driver.find_element(By.ID, "logo").click()
+        assert self.driver.current_url == "http://127.0.0.1:5000/"
+
+        self.driver.find_element(By.LINK_TEXT, "Movies, Music and Video Games").click()
+        assert self.driver.current_url != "http://127.0.0.1:5000/"
+        self.driver.find_element(By.ID, "logo").click()
+        assert self.driver.current_url == "http://127.0.0.1:5000/"
+
+        self.driver.find_element(By.LINK_TEXT, "Jwelery, Watches and Eyewear").click()
+        assert self.driver.current_url != "http://127.0.0.1:5000/"
+        self.driver.find_element(By.ID, "logo").click()
+        assert self.driver.current_url == "http://127.0.0.1:5000/"
+
+        self.driver.find_element(By.LINK_TEXT, "Books").click()
+        assert self.driver.current_url != "http://127.0.0.1:5000/"
+        self.driver.find_element(By.ID, "logo").click()
+        assert self.driver.current_url == "http://127.0.0.1:5000/"
+
+        self.driver.find_element(By.CSS_SELECTOR, "table:nth-child(2) td:nth-child(3) #itemImage").click()
+        assert self.driver.current_url != "http://127.0.0.1:5000/"
+        self.driver.find_element(By.ID, "logo").click()
+        assert self.driver.current_url == "http://127.0.0.1:5000/"
