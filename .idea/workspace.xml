@@ -30,10 +30,15 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/matin/Desktop/Shopping-Cart-master",
+    "last_opened_file_path": "M:/Aplicaciones/Proyectos/TestingAplicaciones-MatrixTesters-TPO/tests_cases/automated",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="M:\Aplicaciones\Proyectos\TestingAplicaciones-MatrixTesters-TPO\tests_cases\automated" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="pytest in TestingAplicaciones-MatrixTesters-TPO" type="tests" factoryName="py.test" nameIsGenerated="true">
       <module name="TestingAplicaciones-MatrixTesters-TPO" />
